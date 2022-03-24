@@ -12,10 +12,10 @@ First, we have to make a named pipe:
 the password in this example is 'foobar', please change to your own.  
 Or, you can put the password in pass.txt and change ```--passphrase``` to ```--passphrase-file pass.txt```  
 
-#####Create Archive
-in one terminal run:  
+#####Create Archive  
+in terminal one, run:  
 ``` tar -c -f - Files | gpg --batch -c --passphrase 'foobar' --yes --compress-level 0 -o - | mbuffer -f -i - -o /tmp/gpg.pipe -D 4208M ```  
-then, in another terminal run:  
+in terminal two, run:  
 ``` cdrecord -data -sao -eject -tsize=4208M -v /tmp/gpg.pipe ```   
 cdrecord will burn the first 4208M to disc,  
 mbuffer will ask to change volumes and wait for pressing enter  
@@ -26,15 +26,15 @@ Rinse & repeat until archive is burned.
 
 #####Extract Archive
 
-The mbuffer -n 2 is how many volumes you are about to feed it.  
+The ```mbuffer -n 2``` is how many volumes you are about to feed it.  
 (dvd blocksize=32768 bytes you may need to know your blocksize)   
 
-```mknod /tmp/gpg.pipe p```  
+```mknod /tmp/dvd-bak.pipe p```  
 In first terminal:  
 ```mbuffer -n 2 -i /tmp/dvd-bak.pipe | gpg --batch --passphrase 'foobar' -d --compress-level 0 -o - | tar xf -```  
 In second terminal:  
 ```dd if=/dev/sr0 of=/tmp/dvd-bak.pipe bs=32768```
 
-I tested this with burning a 8GB archive to 2 DVDs.  
+I tested this with burning a 8GB photo catalog split between 2 DVDs.  
 Hope it all works out! Enjoy.
 
