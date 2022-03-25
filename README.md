@@ -1,6 +1,6 @@
 # tar-gpg-mbuffer-multivolume
-A How-To on creating an encrypted tar archive to span multiple DVD volumes
-
+A How-To on creating an encrypted tar archive to span multiple DVD volumes with no intermediary disk  
+  
 Figuring this out took a while and a few wasted DVDs. Info wasn't easily available on googling.  
 This example is for an encrypted tar that spans multiple DVDs (4208M volume in this example)   #note: 4208M is not the max a DVD can hold. I was just using it in these tests.
 
