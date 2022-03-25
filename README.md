@@ -35,7 +35,7 @@ In first terminal:
 In second terminal:  
 ```dd if=/dev/sr0 of=/tmp/dvd-bak.pipe bs=32768```
 
-dd will error on the last disk since it's likely not 100% full, but don't be alarmed. use ```dd...count=4412407808``` to avoid the error. (4412407808 = 4208M in bytes)
+dd will error on the last disk since it's likely not 100% full, but don't be alarmed. using ```dd...count=4412407808``` did not avoid this error. (4412407808 = 4208M in bytes)
 
 I tested this with burning a 8GB photo catalog split between 2 DVDs.  
 Hope it all works out! Enjoy.
