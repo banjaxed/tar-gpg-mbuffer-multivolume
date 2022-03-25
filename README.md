@@ -14,15 +14,15 @@ Or, you can put the password in pass.txt and change ```--passphrase``` to ```--p
 
 #####Create Archive  
 in terminal one, run:  
-``` tar -c -f - Files | gpg --batch -c --passphrase 'foobar' --yes --compress-level 0 -o - | mbuffer -f -i - -o /tmp/gpg.pipe -D 4208M ```  
+```tar -c -f - Files | gpg --batch -c --passphrase 'foobar' --yes --compress-level 0 -o - | mbuffer -f -i - -o /tmp/gpg.pipe -D 4208M```  
 in terminal two, run:  
-``` cdrecord -data -sao -eject -tsize=4208M -v /tmp/gpg.pipe ```   
+```cdrecord -data -sao -eject -tsize=4208M -v /tmp/gpg.pipe```   
 cdrecord will burn the first 4208M to disc,  
 mbuffer will ask to change volumes and wait for pressing enter  
 load second blank disc, hit enter on first terminal and then in second terminal run the cdrecord command again.  
 Rinse & repeat until archive is burned.
 
-##for trial runs, use ``` dd if=/tmp/gpg.pipe of=foo.iso1 bs=32768 count=4412407808 ```
+##for trial runs, replace the ```cdrecord``` with ```dd if=/tmp/gpg.pipe of=foo.iso1 bs=32768 count=4412407808```
 
 #####Extract Archive
 
